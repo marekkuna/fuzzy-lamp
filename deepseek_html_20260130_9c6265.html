@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moja Kompletna Strona Demo</title>
+    <style>
+        /* ===== RESET I PODSTAWOWE STYLE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        
+        /* ===== KLASY UŻYTKOWE ===== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #4a6fa5;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #385d8a;
+        }
+        
+        /* ===== HEADER I NAWIGACJA ===== */
+        header {
+            background: linear-gradient(135deg, #2c3e50, #4a6fa5);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #ffd166;
+        }
+        
+        /* ===== HERO SECTION ===== */
+        .hero {
+            padding: 100px 0;
+            background-color: #e9ecef;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            color: #555;
+        }
+        
+        /* ===== SEKCJE Z KLASAMI ===== */
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            color: #2c3e50;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 70px;
+            height: 4px;
+            background-color: #4a6fa5;
+        }
+        
+        /* Klasy kolorów dla sekcji */
+        .bg-light {
+            background-color: #f8f9fa;
+        }
+        
+        .bg-blue {
+            background-color: #e3f2fd;
+        }
+        
+        .bg-green {
+            background-color: #e8f5e9;
+        }
+        
+        /* Karty/produkty */
+        .cards {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            flex: 1;
+            min-width: 280px;
+            max-width: 350px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .card h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .card-icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+            color: #4a6fa5;
+        }
+        
+        /* ===== FORMULARZ ===== */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #444;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border 0.3s;
+        }
+        
+        .form-control:focus {
+            border-color: #4a6fa5;
+            outline: none;
+        }
+        
+        /* ===== TABELA ===== */
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .pricing-table th, .pricing-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .pricing-table th {
+            background-color: #4a6fa5;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .pricing-table tr:hover {
+            background-color: #f5f9ff;
+        }
+        
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        /* ===== RESPONSYWNOŚĆ ===== */
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section {
+                padding: 50px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER Z NAWIGACJĄ -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">MojaStrona.pl</div>
+                <ul class="nav-links">
+                    <li><a href="#home">Strona główna</a></li>
+                    <li><a href="#about">O nas</a></li>
+                    <li><a href="#services">Usługi</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- SEKCJA HERO -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Witaj na mojej przykładowej stronie!</h1>
+            <p>Ta strona demonstruje różne elementy HTML, CSS i JavaScript w praktyce. Zawiera wszystko, czego potrzebujesz, aby zacząć tworzyć własne strony internetowe.</p>
+            <a href="#about" class="btn">Dowiedz się więcej</a>
+        </div>
+    </section>
+
+    <!-- SEKCJA "O NAS" Z KLASAMI -->
+    <section class="section bg-light" id="about">
+        <div class="container">
+            <h2 class="section-title">O nas</h2>
+            <div class="cards">
+                <div class="card">
+                    <div class="card-icon">👨‍💻</div>
+                    <h3>Doświadczenie</h3>
+                    <p>Ponad 10 lat tworzymy nowoczesne strony internetowe i aplikacje dla klientów z całego świata.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🚀</div>
+                    <h3>Innowacje</h3>
+                    <p>Stosujemy najnowsze technologie, aby zapewnić szybkie i nowoczesne rozwiązania.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🤝</div>
+                    <h3>Wsparcie</h3>
+                    <p>Zapewniamy pełne wsparcie techniczne przez cały okres użytkowania naszych produktów.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEKCJA USŁUG Z PRZYKŁADAMI KLAS KOLORÓW -->
+    <section class="section bg-blue" id="services">
+        <div class="container">
+            <h2 class="section-title">Nasze usługi</h2>
+            
+            <!-- Przykład użycia klas kolorów -->
+            <div style="background-color: lightblue; padding: 20px; margin-bottom: 20px; border-radius: 8px;">
+                <h3>Strony WWW (z klasą inline - niezalecane)</h3>
+                <p>Tworzymy responsywne strony internetowe dostosowane do wszystkich urządzeń.</p>
+            </div>
+            
+            <div class="bg-green" style="padding: 20px; margin-bottom: 20px; border-radius: 8px;">
+                <h3>Sklepy internetowe (z klasą CSS)</h3>
+                <p>Kompletne rozwiązania e-commerce z integracją płatności i systemem zarządzania.</p>
+            </div>
+            
+            <div style="background-color: #fff3cd; padding: 20px; border-radius: 8px;">
+                <h3>Pozycjonowanie SEO (z klasą inline)</h3>
+                <p>Zwiększamy widoczność Twojej strony w wynikach wyszukiwania Google.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEKCJA Z TABELĄ CEN -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title text-center">Cennik</h2>
+            <table class="pricing-table">
+                <thead>
+                    <tr>
+                        <th>Pakiet</th>
+                        <th>Opis</th>
+                        <th>Cena</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Podstawowy</td>
+                        <td>Strona wizytówka (do 5 podstron)</td>
+                        <td>1 500 zł</td>
+                        <td><button class="btn" onclick="wybierzPakiet('Podstawowy')">Wybierz</button></td>
+                    </tr>
+                    <tr>
+                        <td>Biznesowy</td>
+                        <td>Strona firmowa z CMS (do 15 podstron)</td>
+                        <td>3 500 zł</td>
+                        <td><button class="btn" onclick="wybierzPakiet('Biznesowy')">Wybierz</button></td>
+                    </tr>
+                    <tr>
+                        <td>Premium</td>
+                        <td>Sklep internetowy + SEO</td>
+                        <td>7 000 zł</td>
+                        <td><button class="btn" onclick="wybierzPakiet('Premium')">Wybierz</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- SEKCJA KONTAKTOWA Z FORMULARZEM -->
+    <section class="section bg-light" id="contact">
+        <div class="container">
+            <h2 class="section-title text-center">Skontaktuj się z nami</h2>
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Imię i nazwisko:</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Adres e-mail:</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="service">Usługa:</label>
+                        <select id="service" class="form-control">
+                            <option value="">Wybierz usługę</option>
+                            <option value="www">Strona WWW</option>
+                            <option value="shop">Sklep internetowy</option>
+                            <option value="seo">Pozycjonowanie</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Wiadomość:</label>
+                        <textarea id="message" class="form-control" rows="5" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn" style="width: 100%;">Wyślij wiadomość</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- STOPKA -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 MojaStrona.pl - Wszelkie prawa zastrzeżone</p>
+            <p>Strona demonstracyjna HTML/CSS/JS</p>
+            <p id="currentDate" style="margin-top: 15px; font-size: 0.9rem;"></p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // Wyświetlanie aktualnej daty
+        const currentDate = new Date();
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('currentDate').textContent = `Dzisiaj jest: ${currentDate.toLocaleDateString('pl-PL', options)}`;
+        
+        // Obsługa formularza
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Zatrzymuje domyślne wysłanie formularza
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            
+            alert(`Dziękujemy ${name}! Twoja wiadomość została "wysłana" (to tylko demo).\nOdpowiemy na adres: ${email}`);
+            
+            // Reset formularza
+            this.reset();
+        });
+        
+        // Funkcja dla przycisków w tabeli
+        function wybierzPakiet(pakiet) {
+            alert(`Wybrano pakiet: ${pakiet}\nW prawdziwej aplikacji tutaj przejdziesz do płatności.`);
+        }
+        
+        // Zmiana koloru nagłówka po kliknięciu
+        document.querySelector('.logo').addEventListener('click', function() {
+            const colors = ['#2c3e50', '#4a6fa5', '#6a11cb', '#ff6b6b', '#1dd1a1'];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            this.style.color = randomColor;
+        });
+        
+        // Prosta animacja dla kart
+        const cards = document.querySelectorAll('.card');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+        
+        // Konsola - do celów edukacyjnych
+        console.log('Strona została załadowana! Możesz otworzyć narzędzia deweloperskie (F12) aby zobaczyć więcej.');
+    </script>
+</body>
+</html>
